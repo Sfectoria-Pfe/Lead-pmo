@@ -1,0 +1,32 @@
+/* Styles for Navbar */
+.navbar {
+    background-color: #dddee4; /* Couleur de fond */
+    color: #560000; /* Couleur du texte */
+    font-family: 'Roboto', sans-serif; /* Police de caractères */
+  }
+  
+  .navbar-brand {
+    font-weight: bold; /* Police en gras pour le titre */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #ffffff; /* Couleur du texte des liens */
+    font-weight: 500; /* Police moyenne pour les liens */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffffff; /* Couleur du texte des liens au survol */
+    background-color: #3949AB; /* Couleur de fond au survol */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #ffffff; /* Couleur de l'icône du bouton de basculement */
+  }
+  
+  /* Media query pour gérer la taille de la barre de navigation sur les petits écrans */
+  @media (max-width: 768px) {
+    .navbar-nav .nav-link {
+      font-size: 14px; /* Réduire la taille de la police pour les petits écrans */
+    }
+  }
+  
