@@ -1,49 +1,42 @@
 import React from 'react';
-import { Typography, Link, Container, Box } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-
-const useStyles = makeStyles({
-  footer: {
-    backgroundColor: '#2c3e50',
-    color: '#ffffff',
-    padding: '20px 0',
-    textAlign: 'center',
-  },
-  footerText: {
-    marginBottom: 10,
-  },
-  heartIcon: {
-    color: 'red',
-    verticalAlign: 'middle',
-  },
-  link: {
-    color: '#ffffff',
-    textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'underline',
-    },
-  },
-});
-
+import { Container, Row, Col } from 'react-bootstrap';
+import './footer.css';
 const Footer = () => {
-  const classes = useStyles();
-
   return (
-    
-    <footer className={classes.footer}>
-      <Container maxWidth="sm">
-        <Typography variant="body1" className={classes.footerText}>
-          © {new Date().getFullYear()} Mon Application. Tous droits réservés.
-        </Typography>
-        <Typography variant="body2" className={classes.footerText}>
-          Réalisé avec <span className={classes.heartIcon}>❤️</span> par {' '}
-          <Link href="https://example.com" target="_blank" rel="noopener" className={classes.link}>
-            Votre Nom
-          </Link>
-        </Typography>
+    <footer className="footer">
+      <Container>
+        <Row>
+          <Col md={4} sm={6}>
+            <h5>À propos de nous</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Col>
+          <Col md={4} sm={6}>
+            <h5>Liens utiles</h5>
+            <ul className="list-unstyled">
+              <li><a href="#">Accueil</a></li>
+              <li><a href="#">À propos</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </Col>
+          <Col md={4} sm={12}>
+            <h5>Contactez-nous</h5>
+            <p>123 rue de la République, Paris, France</p>
+            <p>Email: contact@example.com</p>
+          </Col>
+        </Row>
       </Container>
+      <div className="footer-bottom">
+        <Container>
+          <Row>
+            <Col md={12}>
+              <p className="text-center">&copy; 2024 Mon Site Web. Tous droits réservés.</p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </footer>
   );
-};
+}
 
 export default Footer;
