@@ -1,22 +1,23 @@
-import express   from "express";
-import mysql from 'mysql';
-import cors from 'cors';
-import jwt  from "jsonwebtoken";
-import bcrypt from 'bcrypt';
-import cookieParser from "cookie-parser";
+
+const express = require("express");
+const mysql = require("mysql");
 
 const app = express();
-app.use(express.json());
-app.use(cors());
-app.use(cookieParser());
-
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: 'signup'
+    host :'localhost',
+    user:'root',
+    password:'',
+    database:'pmo'
+
+
+
 })
 
-app.listen(4000 , ()=> {
-    console.log('listeaan ');
-})
+app.get("/", (req, res) => {
+    res.send("<h1>Hello world</h1>");
+});
+
+app.listen(5001, () => {
+    console.log("Server started");
+});
+
