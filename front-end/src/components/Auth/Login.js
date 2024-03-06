@@ -16,7 +16,7 @@ const Login = () => {
               </a>
       
 
-        {/* Login button on the right */}
+ 
         <button className="bg-black text-white hover:bg-gray-900 font-bold py-2 px-6 rounded mr-20" onClick={() => setOpenModal(true)}>Login</button>
       </div>
       {openModal && (
