@@ -1,0 +1,50 @@
+/* signup.css */
+
+/* Style pour le conteneur principal */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Style pour les colonnes */
+  .col {
+    margin-bottom: 20px;
+  }
+  
+  /* Style pour les boutons */
+  button {
+    margin-right: 10px;
+  }
+  
+  /* Style pour les modales */
+  .modal-header {
+    background-color: #96c1ee;
+    color: #fff;
+  }
+  
+  .modal-footer {
+    justify-content: space-between;
+  }
+  
+  /* Style pour les titres des étapes */
+  .modal-title {
+    font-weight: bold;
+  }
+  
+  /* Style pour les champs de formulaire */
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  /* Style pour le feedback d'invalidité du formulaire */
+  .feedback-invalid {
+    color: red;
+  }
+  
+  /* Style pour les icônes */
+  .bi-arrow-left {
+    margin-right: 5px;
+  }
+  

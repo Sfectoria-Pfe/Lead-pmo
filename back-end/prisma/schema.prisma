@@ -1,0 +1,71 @@
+// This is your Prisma schema file.
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role { 
+  ADMIN
+  USER 
+  PROJECTMANAGER
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Project {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  boards      Board[]
+}
+
+model Board {
+  id          Int       @id @default(autoincrement())
+  name        String
+  lists       List[]
+  project     Project   @relation(fields: [projectId], references: [id])
+  projectId   Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model List {
+  id          Int       @id @default(autoincrement())
+  title        String
+ 
+  tasks       Task[]
+  board       Board     @relation(fields: [boardId], references: [id])
+  boardId     Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  priority    String?
+  deadline    DateTime?
+  image       String?
+  list        List     @relation(fields: [listId], references: [id])
+  listId      Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
