@@ -1,24 +1,39 @@
-import LoadingScreen from "../../LoadingScreen";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBoards } from "../../../Services/boardsService";
 import Navbar from "../../Navbar";
 import { Container, Wrapper, Title, Board, AddBoard } from "./Styled";
 import CreateBoard from "../../Modals/CreateBoardModal/CreateBoard";
-import { useHistory } from "react-router";
+import Sidebar from "../../sidebar/sidebar";
+import { useNavigate } from "react-router-dom";
+import LoadingScreen from "../../LoadingScreen";
+import { useParams } from 'react-router-dom';
+
+export function WorkspaceId() {
+  const { workspaceId } = useParams();
+  console.log("Workspace ID:", workspaceId);
+
+  return (
+    <>
+      <h1>Workspace ID: {workspaceId}</h1>
+    </>
+  );
+}
 
 const Boards = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const { pending, boardsData } = useSelector((state) => state.boards);
-  const [openModal, setOpenModal] = useState(false);
+  
   const [searchString, setSearchString] = useState('');
-  const handleModalClose = () => {
-    setOpenModal(false);
-  };
+
+  const { workspaceId } = useParams();
+  console.log("Workspace ID:", workspaceId);
 
   const handleClick = (e) => {
-   history.push(`/board/${e.target.id}`)
+  navigate(`/board/${e.target.id}`)
   }
 
   useEffect(() => {
@@ -26,16 +41,21 @@ const Boards = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    document.title = "Boards | Trello Clone"
+    document.title = "Boards | SprintGo"
   }, [])
 
   return (
     <>
       {pending && <LoadingScreen />}
-      <Container>        
-        <Navbar searchString={searchString} setSearchString={setSearchString} />
+      <Container  >        
+     
+
+        <Navbar  searchString={searchString} setSearchString={setSearchString} />
         <Wrapper>
-          <Title>Your Boards</Title>
+       
+          <Title>All Boards</Title>
+          
+        
           {!pending &&
             boardsData.length>0 &&
             boardsData.filter(item=>searchString?item.title.toLowerCase().includes(searchString.toLowerCase()):true).map((item) => {
@@ -45,13 +65,11 @@ const Boards = () => {
                 </Board>
               );
             })}
-          {!pending && (
-            <AddBoard onClick={() => setOpenModal(true)}>
-              Create new board
-            </AddBoard>
-          )}
-          {openModal && <CreateBoard callback={handleModalClose} />}
+           
+        
+        
         </Wrapper>
+       
       </Container>
     </>
   );

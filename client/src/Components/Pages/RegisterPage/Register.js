@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Background from "../../Background";
 import { register } from "../../../Services/userService";
 import { useDispatch, useSelector } from "react-redux";
+import sprintgo from "../../../Images/3.svg"
 import {
   BgContainer,
   Container,
-  TrelloIconContainer,
+  SprintgoIconContainer,
   FormSection,
   FormCard,
   Form,
@@ -19,10 +20,9 @@ import {
   Link,
 } from "./Styled";
 import { useEffect } from "react";
-import leadlogo from "../../../assets/leadlogo.png";
 
 const Register = () => {
-  let history = useHistory();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const { pending } = useSelector((state) => state.user);
   const [userInformations, setUserInformations] = useState({
@@ -34,7 +34,7 @@ const Register = () => {
   });
 
   useEffect(() => {
-    document.title = "Create a Trello Account"
+    document.title = "Create a SprintGo"
   }, [])
 
   const handleSubmit = async (e) => {
@@ -44,13 +44,9 @@ const Register = () => {
 
   return (
     <>
-      <BgContainer>
-        <Background />
-      </BgContainer>
+      
       <Container>
-        <TrelloIconContainer onClick={() => history.push("/")}>
-          <Icon src={leadlogo}  />
-        </TrelloIconContainer>
+
         <FormSection>
           <FormCard>
             <Form onSubmit={(e) => handleSubmit(e)}>
@@ -124,7 +120,7 @@ const Register = () => {
                 Complete
               </Button>
               <Hr />
-              <Link fontSize="0.85rem" onClick={() => history.push("/login")}>
+              <Link fontSize="0.85rem" onClick={() => navigate("/login")}>
                 Already have an account? Log In
               </Link>
             </Form>

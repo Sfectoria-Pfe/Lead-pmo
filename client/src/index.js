@@ -9,11 +9,15 @@ import '@atlaskit/css-reset';
 import './Components/Modals/EditCardModal/Popovers/Date/DateRange.css';
 import './index.css';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
+
     <App />
+  
     </Provider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

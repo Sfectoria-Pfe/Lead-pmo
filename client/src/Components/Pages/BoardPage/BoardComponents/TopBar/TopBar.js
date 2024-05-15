@@ -8,9 +8,13 @@ import { boardTitleUpdate } from '../../../../../Services/boardsService';
 import RightDrawer from '../../../../Drawers/RightDrawer/RightDrawer';
 import BasePopover from '../../../../Modals/EditCardModal/ReUsableComponents/BasePopover';
 import InviteMembers from '../../../../Modals/EditCardModal/Popovers/InviteMembers/InviteMembers';
-
+import { Button } from '@mui/material';
+import { Deleteboard } from '../../../../../Services/boardsWorkspaceService';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const TopBar = () => {
+	const {id} = useParams();
 	const board = useSelector((state) => state.board);
 	const [currentTitle, setCurrentTitle] = useState(board.title);
 	const [showDrawer,setShowDrawer] = useState(false);
@@ -23,6 +27,20 @@ const TopBar = () => {
 	const handleTitleChange = () => {
 		boardTitleUpdate(currentTitle,board.id,dispatch);
 	};
+	// useEffect ( ()=> {
+	// 	Deleteboard(id, dispatch);
+	// },[id,dispatch]);
+
+	const navigate = useNavigate();
+	const handleDeleteBoard = () => {
+        if (window.confirm('Are you sure you want to delete this board?')) {
+            Deleteboard(id, dispatch).then(() => {
+				console.log("testing navigate");
+				navigate(-1); 
+			});;
+        }
+    };
+
 	return (
 		<style.TopBar>
 			<style.LeftWrapper>
@@ -52,6 +70,7 @@ const TopBar = () => {
 			</style.LeftWrapper>
 
 			<style.RightWrapper>
+			<Button onClick={handleDeleteBoard} variant="contained" color="secondary">Delete Board</Button>
 				<common.Button onClick={()=>{setShowDrawer(true)}}>
 					<MoreHorizIcon />
 					<style.TextSpan>Show menu</style.TextSpan>

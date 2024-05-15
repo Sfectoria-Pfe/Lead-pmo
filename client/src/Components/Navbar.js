@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import DropdownMenu from './DropdownMenu';
 import SearchBar from './SearchBar';
 import { xs } from '../BreakPoints';
 import ProfileBox from './ProfileBox';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Sidebar from './sidebar/sidebar';
+// import CreateBoard from './Modals/CreateBoardModal/CreateBoard';
+import sprintgo from "../Images/sprintgo2.gif"
 
 const Container = styled.div`
 	height: 3rem;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.3);
+	
+	background-color: rgba(28, 41, 66, 0.3);
 	backdrop-filter: blur(24px);
 	position: fixed;
 	top: 0;
@@ -17,6 +21,7 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	
 	justify-content: space-between;
 	padding: 0.5rem 1rem;
 	gap: 0.5rem;
@@ -45,6 +50,7 @@ const RightSide = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	gap:5px;
 	justify-content: flex-end;
 `;
 
@@ -70,28 +76,38 @@ const DropdownContainer = styled.div`
 `;
 
 const Navbar = (props) => {
-	const history = useHistory();
+	const [openModal, setOpenModal] = useState(false);
+	const navigate = useNavigate();
+	const handleModalClose = () => {
+		setOpenModal(false);
+	  };
 
 	return (
-		<Container>
+		<Container style={{zIndex:9999,position:"fixed",width:"100%"}}>
 			<LeftSide>
 				<LogoContainer>
 					<TrelloLogo
 						onClick={() => {
-							history.push('/boards');
+							navigate('/');
 						}}
-						src='https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif'
+						src={sprintgo}
+						alt='Logo'
+						// https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif
 					/>
 				</LogoContainer>
-				<DropdownContainer>
-					<DropdownMenu title='Your Boards' />
+				<DropdownContainer style={{paddingLeft:"150px"}}>
+					<DropdownMenu title='Your WorkSpaces' />
+					
 				</DropdownContainer>
 			</LeftSide>
 			<RightSide>
+				{/* <button className='btn btn-danger ' onClick={() => setOpenModal(true)}>Create</button> */}
 				<SearchBar searchString={props.searchString} setSearchString={props.setSearchString} />
 				<ProfileBox />
 			</RightSide>
+	{/* {openModal && <CreateBoard callback={handleModalClose} />} */}
 		</Container>
+		
 	);
 };
 

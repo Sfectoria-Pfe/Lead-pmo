@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import IndexNav from "../../IndexNav";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Content,
@@ -12,12 +12,12 @@ import {
   Button,
   SvgItem,
 } from "./Styled";
-import leadlogo from "../../../assets/leadlogo.png"
+
 
 const Index = () => {
-  let history = useHistory();
+  let navigate= useNavigate();
   useEffect(() => {
-    document.title = "Trello Clone"
+    document.title = "SprintGo"
   }, [])
   return (
     <>
@@ -26,19 +26,18 @@ const Index = () => {
         <Content>
           <LeftSide>
             <LeftWrapper>
-              <Title>Trello helps teams move work forward.</Title>
+              <Title>            Streamline Your Projects, Boost Productivity, and Achieve Success</Title>
               <Text>
-                Collaborate, manage projects, and reach new productivity peaks.
-                From high rises to the home office, the way your team works is
-                unique—accomplish it all with Trello.
+              With SpringGo, managing your projects has never been easier. Our comprehensive project management system offers powerful tools and features to help you plan, execute, and track your projects with efficiency and precision. From task management to team collaboration, SpringGo has everything you need to drive your projects forward and deliver results.
+
               </Text>
-              <Button onClick={() => history.push("/register")}>
+              <Button onClick={() => navigate("/register")}>
                 Sign up - it's free
               </Button>
             </LeftWrapper>
           </LeftSide>
           <RightSide>
-            <SvgItem src="https://images.ctfassets.net/rz1oowkt5gyp/5QIzYxue6b7raOnVFtMyQs/113acb8633ee8f0c9cb305d3a228823c/hero.png?w=1200&fm=webp" />
+            <SvgItem src="https://www.simplilearn.com/ice9/free_resources_article_thumb/project_management_coursefees.jpg" />
           </RightSide>
         </Content>
       </Container>

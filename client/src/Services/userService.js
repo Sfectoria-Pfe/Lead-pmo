@@ -70,7 +70,7 @@ export const login = async ({ email, password }, dispatch) => {
         message,
         severity: "success",
         duration: 500,
-        nextRoute: "/boards",
+        nextRoute: "/",
       })
     );
   } catch (error) {

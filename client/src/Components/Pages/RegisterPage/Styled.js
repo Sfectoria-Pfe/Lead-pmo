@@ -15,7 +15,7 @@ export const Container = styled.div`
     backgroundColor: "#F9FAFC",
   })}
 `;
-export const TrelloIconContainer = styled.div`
+export const SprintgoIconContainer = styled.div`
   cursor: pointer;
   padding-top: 2.5rem;
   ${md({
@@ -24,10 +24,10 @@ export const TrelloIconContainer = styled.div`
 `;
 export const Icon = styled.img`
   display: block;
-  height: 3rem;
+  height: 10rem;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 0.2rem;
   ${md({
     marginBottom: "1rem",
   })}

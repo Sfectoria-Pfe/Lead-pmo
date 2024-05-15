@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	background-image: url('https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/a651551a5214cb84963366cf9eaacb40/photo-1636207543865-acf3ad382295.jpg');
+	background-color: #F0EEE9;
 	background-position: 50%;
 	background-size: cover;
 	height: 100vh;
@@ -9,6 +9,7 @@ export const Container = styled.div`
 	position: fixed;
 	top: 0;
 	left: 0;
+	padding-left: 20%;
 `;
 
 export const Title = styled.h1`

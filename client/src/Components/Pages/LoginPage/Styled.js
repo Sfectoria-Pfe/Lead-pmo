@@ -9,25 +9,28 @@ export const BgContainer = styled.div`
 `;
 
 export const Container = styled.div`
+display: flex;
+  justify-content: center; // Horizontally center children
+  align-items: center; // Vertically center children
   width: 100%;
   height: 100vh;
   ${md({
     backgroundColor: "#F9FAFC",
   })}
 `;
-export const TrelloIconContainer = styled.div`
+export const SprintgoIconContainer = styled.div`
   cursor: pointer;
-  padding-top: 2rem;
+  padding-top: 2.5rem;
   ${md({
     paddingTop: "1rem",
   })}
 `;
 export const Icon = styled.img`
   display: block;
-  height: 2.6rem;
+  height: 10rem;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.2rem;
   ${md({
     marginBottom: "1rem",
   })}

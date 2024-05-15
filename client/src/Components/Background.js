@@ -2,10 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import LeftImage from "../Images/trello-left.svg";
 import RightImage from "../Images/trello-right.svg";
-import Lottie from 'react-lottie';
-import right from "../assets/lotties/right.json"
-import left from "../assets/lotties/left.json"
-
 
 const Container = styled.div`
   background-color: #f9fafc;
@@ -43,34 +39,10 @@ const Background = () => {
   return (
     <Container>
       <LeftSide>
-      <Lottie 
-	    options={{
-        loop: true,
-        autoplay: true,
-        animationData: left,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice"
-        }
-      }}
-      height={450}
-      width={450}
-      style={{marginBottom:"-70px"}}
-      />
+        <Svg src={LeftImage}  />
       </LeftSide>
       <RightSide>
-      <Lottie 
-	    options={{
-        loop: true,
-        autoplay: true,
-        animationData: right,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice"
-        }
-      }}
-        height={420}
-        width={420}
-        style={{marginBottom:"-55px"}}
-      />
+        <Svg src={RightImage}  />
       </RightSide>
     </Container>
   );
