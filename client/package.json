@@ -22,6 +22,7 @@
     "bootstrap": "^5.3.3",
     "date-fns": "^2.0.0-beta.5",
     "eslint-plugin-react-hooks": "^4.2.1-alpha-a44a7a2a3-20211111",
+    "formik": "^2.4.6",
     "framer-motion": "^6.5.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -33,7 +34,8 @@
     "react-router-dom": "^6.23.0",
     "react-scripts": "^5.0.1",
     "styled-components": "^5.3.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

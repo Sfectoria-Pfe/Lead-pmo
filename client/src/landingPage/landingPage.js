@@ -45,17 +45,17 @@ export default function LandingPage() {
        
       <Hero />
      
-        <LogoCollection />
+        {/* <LogoCollection />
         <Features />
         <Divider />
         <Testimonials />
-        <Divider />
-        <Highlights />
+        <Divider /> */}
+        {/* <Highlights />
         <Divider />
         <Pricing />
         <Divider />
         <FAQ />
-        <Divider />
+        <Divider /> */}
         <Footer />
       </Box>
       

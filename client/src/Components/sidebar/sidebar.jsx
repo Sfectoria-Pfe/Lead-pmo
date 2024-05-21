@@ -277,7 +277,7 @@ export default function Sidebar() {
                     component="a"
                     href="/manage"
                   
-                  >Manage Users</ListItemButton>
+                  >User List</ListItemButton>
                 </ListItem>
                 
               </List>

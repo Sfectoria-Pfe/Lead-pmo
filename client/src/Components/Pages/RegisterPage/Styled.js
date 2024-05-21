@@ -35,6 +35,7 @@ export const Icon = styled.img`
 export const FormSection = styled.section`
   display: block;
   word-wrap: break-word;
+  margin-top: 30%;
 `;
 export const FormCard = styled.div`
   box-sizing: border-box;
@@ -91,7 +92,7 @@ export const Input = styled.input`
   }
 `;
 export const Button = styled.button`
-  background-color: #5aac44;
+  background-color: #0052cc;
   width: 100%;
   border-radius: 0.4rem;
   padding: 0.5rem 1rem;
@@ -103,7 +104,7 @@ export const Button = styled.button`
     background: ${(props) =>
       props.disabled
         ? "lightgrey"
-        : "linear-gradient(to bottom, #61bd4f 0%, #5aac44 100%)"};
+        : "linear-gradient(to bottom,  #0052cc 0%,  #0052cc 100%)"};
   }
   &:disabled {
     background-color: lightgray;

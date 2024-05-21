@@ -1,83 +1,105 @@
-import React, { useState } from 'react';
-import { Container, TextField, Button, Typography, Box } from '@mui/material';
+import React from 'react';
+import { Container, TextField, Button, Typography, Box, Paper } from '@mui/material';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import axios from 'axios';
 
 const Create = () => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [alertMessage, setAlertMessage] = useState('');
-  const [alertType, setAlertType] = useState('');
-
-  const addUser = async () => {
-    try {
-      await axios.post('http://localhost:3001/user/add-user', { name, surname, email, password });
-      clearForm();
-      setAlertMessage('User has been created');
-      setAlertType('success');
-      setTimeout(() => {
-        setAlertMessage('');
-      }, 1000); 
-    } catch (error) {
-      setAlertMessage('Error adding user. Please try again.');
-      setAlertType('error');
-    }
-  };
-
-  const clearForm = () => {
-    setName('');
-    setSurname('');
-    setEmail('');
-    setPassword('');
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      surname: '',
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required('Name is required'),
+      surname: Yup.string().required('Surname is required'),
+      email: Yup.string().email('Invalid email address').required('Email is required'),
+      password: Yup.string().min(6, 'Password must be at least 6 characters long').required('Password is required'),
+    }),
+    onSubmit: async (values, { resetForm, setSubmitting, setStatus }) => {
+      try {
+        await axios.post('http://localhost:3001/user/add-user', values);
+        resetForm();
+        setStatus({ message: 'User has been created', type: 'success' });
+        setTimeout(() => {
+          setStatus({ message: '', type: '' });
+        }, 1000);
+      } catch (error) {
+        setStatus({ message: 'Error adding user. Please try again.', type: 'error' });
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
 
   return (
     <Container maxWidth="sm">
       <Box mt={4} mb={2} textAlign="center">
         <Typography variant="h4">Add New User</Typography>
       </Box>
-      <form>
-        <TextField
-          label="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Surname"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <Box mt={2} textAlign="center">
-          <Button variant="contained" onClick={addUser}>Add User</Button>
+      <Paper elevation={3}>
+        <Box p={3}>
+          <form onSubmit={formik.handleSubmit}>
+            <TextField
+              label="Name"
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              fullWidth
+              margin="normal"
+              error={formik.touched.name && Boolean(formik.errors.name)}
+              helperText={formik.touched.name && formik.errors.name}
+            />
+            <TextField
+              label="Surname"
+              name="surname"
+              value={formik.values.surname}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              fullWidth
+              margin="normal"
+              error={formik.touched.surname && Boolean(formik.errors.surname)}
+              helperText={formik.touched.surname && formik.errors.surname}
+            />
+            <TextField
+              label="Email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              fullWidth
+              margin="normal"
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              fullWidth
+              margin="normal"
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+            />
+            <Box mt={2} textAlign="center">
+              <Button type="submit" variant="contained" color="primary" disabled={formik.isSubmitting}>Add User</Button>
+            </Box>
+            {formik.status && formik.status.message && (
+              <Box mt={2} textAlign="center">
+                <Typography style={{ backgroundColor: formik.status.type === 'success' ? 'green' : 'red', color: 'white', padding: '10px', borderRadius: '5px' }}>
+                  {formik.status.message}
+                </Typography>
+              </Box>
+            )}
+          </form>
         </Box>
-        {alertMessage && (
-          <Box mt={2} textAlign="center">
-            <Typography style={{ backgroundColor: alertType === 'success' ? 'green' : 'red', color: 'white', padding: '10px', borderRadius: '5px' }}>
-              {alertMessage}
-            </Typography>
-          </Box>
-        )}
-      </form>
+      </Paper>
     </Container>
   );
 };

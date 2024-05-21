@@ -94,7 +94,7 @@ export const Input = styled.input`
   }
 `;
 export const Button = styled.button`
-  background-color: #5aac44;
+  background-color:  #0052cc;
   width: 100%;
   border-radius: 0.4rem;
   padding: 0.5rem 1rem;
@@ -103,7 +103,7 @@ export const Button = styled.button`
   cursor: pointer;
   font-weight: bold;
   &:hover {
-    background: linear-gradient(to bottom, #61bd4f 0%, #5aac44 100%);
+    background: linear-gradient(to bottom,  #0052cc 0%,  #0052cc 100%);
   }
 `;
 export const Hr = styled.hr`
