@@ -19,6 +19,98 @@ const Chat = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [sendMessage, setSendMessage] = useState(null);
   const [receivedMessage, setReceivedMessage] = useState(null);
+
+
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user:detail')))
+	// const [conversations, setConversations] = useState([])
+	// const [messages, setMessages] = useState({})
+	// const [message, setMessage] = useState('')
+	// const [users, setUsers] = useState([])
+	// const [socket, setSocket] = useState(null)
+	// const messageRef = useRef(null)
+
+	// useEffect(() => {
+	// 	setSocket(io('http://localhost:8080'))
+	// }, [])
+
+	// useEffect(() => {
+	// 	socket?.emit('addUser', user?.id);
+	// 	socket?.on('getUsers', users => {
+	// 		console.log('activeUsers :>> ', users);
+	// 	})
+	// 	socket?.on('getMessage', data => {
+	// 		setMessages(prev => ({
+	// 			...prev,
+	// 			messages: [...prev.messages, { user: data.user, message: data.message }]
+	// 		}))
+	// 	})
+	// }, [socket])
+
+	// useEffect(() => {
+	// 	messageRef?.current?.scrollIntoView({ behavior: 'smooth' })
+	// }, [messages?.messages])
+
+	// useEffect(() => {
+	// 	const loggedInUser = JSON.parse(localStorage.getItem('user:detail'))
+	// 	const fetchConversations = async () => {
+	// 		const res = await fetch(`http://localhost:8000/api/conversations/${loggedInUser?.id}`, {
+	// 			method: 'GET',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 			}
+	// 		});
+	// 		const resData = await res.json()
+	// 		setConversations(resData)
+	// 	}
+	// 	fetchConversations()
+	// }, [])
+
+	// useEffect(() => {
+	// 	const fetchUsers = async () => {
+	// 		const res = await fetch(`http://localhost:8000/api/users/${user?.id}`, {
+	// 			method: 'GET',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 			}
+	// 		});
+	// 		const resData = await res.json()
+	// 		setUsers(resData)
+	// 	}
+	// 	fetchUsers()
+	// }, [])
+
+	// const fetchMessages = async (conversationId, receiver) => {
+	// 	const res = await fetch(`http://localhost:8000/api/message/${conversationId}?senderId=${user?.id}&&receiverId=${receiver?.receiverId}`, {
+	// 		method: 'GET',
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 		}
+	// 	});
+	// 	const resData = await res.json()
+	// 	setMessages({ messages: resData, receiver, conversationId })
+	// }
+
+	// const sendMessage = async (e) => {
+	// 	setMessage('')
+	// 	socket?.emit('sendMessage', {
+	// 		senderId: user?.id,
+	// 		receiverId: messages?.receiver?.receiverId,
+	// 		message,
+	// 		conversationId: messages?.conversationId
+	// 	});
+	// 	const res = await fetch(`http://localhost:8000/api/message`, {
+	// 		method: 'POST',
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 		},
+	// 		body: JSON.stringify({
+	// 			conversationId: messages?.conversationId,
+	// 			senderId: user?.id,
+	// 			message,
+	// 			receiverId: messages?.receiver?.receiverId
+	// 		})
+	// 	});
+	// }
   // Get the chat in chat section
   useEffect(() => {
     const getChats = async () => {
