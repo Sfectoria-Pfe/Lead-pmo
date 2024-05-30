@@ -21,6 +21,7 @@ const ChatsPane = (props) => {
         overflowY: 'auto',
       }}
     >
+      
       <Stack
         direction="row"
         spacing={1}
@@ -94,6 +95,7 @@ const ChatsPane = (props) => {
         ))}
       </List>
     </Sheet>
+
   );
 };
 

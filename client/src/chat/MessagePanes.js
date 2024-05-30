@@ -48,12 +48,7 @@ const MessagesPane = (props) => {
                 spacing={2}
                 flexDirection={isYou ? 'row-reverse' : 'row'}
               >
-                {message.sender !== 'You' && (
-                  <AvatarWithStatus
-                    online={message.sender.online}
-                    src={message.sender.avatar}
-                  />
-                )}
+               
                 <ChatBubble variant={isYou ? 'sent' : 'received'} {...message} />
               </Stack>
             );
